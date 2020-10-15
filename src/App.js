@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { MoviesList } from "./Components/MoviesList/MoviesList";
+import { SearchMovie } from "./Components/SearchMovie/SearchMovie";
+import { moviesData } from "./Components/Moviesdata";
+import { AddMovie } from "./Components/AddMovie/AddMovie";
 
-function App() {
+import Footer from "./Components/Footer/Footer";
+
+const App = () => {
+  const [moviesList, setMoviesList] = useState(moviesData);
+  const [nameSearch, setNameSearch] = useState("");
+
+  const [ratingSearch, setRatingSearch] = useState(0);
+
+  const addMovie = (newMovie) => {
+    setMoviesList([...moviesList, newMovie]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-movies">
+      <SearchMovie
+        setNameSearch={setNameSearch}
+        ratingSearch={ratingSearch}
+        setRatingSearch={setRatingSearch}
+      />
+
+      <MoviesList
+        moviesList={moviesList}
+        ratingSearch={ratingSearch}
+        nameSearch={nameSearch}
+      />
+
+      <div className="addmovie">
+        <AddMovie addMovie={addMovie} />
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
