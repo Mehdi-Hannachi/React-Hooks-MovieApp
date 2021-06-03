@@ -1,7 +1,6 @@
 .movies-list {
   display: flex;
   flex-wrap: wrap;
-  height: 1200px;
   justify-content: space-between;
   margin: 150px;
 }

@@ -9,19 +9,20 @@ export const AddMovie = ({ addMovie }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [Name, setName] = useState("");
-  const [Description, setDescription] = useState("");
-  const [Image, setImage] = useState("");
-  const [Date, setDate] = useState("");
-  const [Rate, setRate] = useState();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [date, setDate] = useState("");
+  const [rate, setRate] = useState();
 
   const submitMovie = () => {
     let newMovie = {
-      name: Name,
-      description: Description,
-      img: Image,
-      date: Date,
-      rating: Rate,
+      name: name,
+      description: description,
+      img: image,
+      date: date,
+      rating: rate,
+      id: Math.random(),
     };
     console.log(newMovie);
     addMovie(newMovie);
@@ -41,7 +42,7 @@ export const AddMovie = ({ addMovie }) => {
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type="email"
+                type="text"
                 placeholder="Enter Movie Name "
                 onChange={(e) => setName(e.target.value)}
               />
@@ -65,8 +66,8 @@ export const AddMovie = ({ addMovie }) => {
             <Form.Group controlId="formBasicImage">
               <Form.Label>Image</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Enter email"
+                type="text"
+                placeholder="Enter Image film"
                 onChange={(e) => setImage(e.target.value)}
               />
             </Form.Group>
